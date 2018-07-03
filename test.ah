@@ -2,3 +2,6 @@
 name 'Smores';
 
 log("Test this update");
+
+somevar = 'test';
+

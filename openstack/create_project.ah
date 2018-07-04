@@ -1,0 +1,20 @@
+name 'create_project';
+
+sig $name;
+
+auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+return post('/v3/projects', {
+    'driver': 'OpenstackDriver',
+    'post': {
+      'project': {
+        'name': params.$name,
+      }
+    },
+  }) {%
+  result = result.project.id;
+  log('Created project: ' + result);
+%};
+

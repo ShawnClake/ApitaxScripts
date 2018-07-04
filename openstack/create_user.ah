@@ -8,7 +8,6 @@ url endpoint('keystone@OpenstackDriver');
 
 return post('/v3/users', {
   'driver': 'OpenstackDriver',
-  'auth': params.$auth,
   'post': {
     'user': {
        'name': params.username,

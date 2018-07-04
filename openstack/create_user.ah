@@ -1,13 +1,12 @@
 name 'create_user';
 
-sig username, email, password;
-
-auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+sig username, email, password, $auth;
 
 url endpoint('keystone@OpenstackDriver');
 
 return post('/v3/users', {
   'driver': 'OpenstackDriver',
+  'auth': params.$auth,
   'post': {
     'user': {
        'name': params.username,

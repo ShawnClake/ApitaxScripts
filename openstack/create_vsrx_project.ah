@@ -14,11 +14,11 @@ email = '{{$name}}@{{$name}}.com';
 
 log($name);
 
-role = async script('openstack/get_role.ah', role_name=params.role);
+role = script('openstack/get_role.ah', role_name=params.role);
 
-user = async script('openstack/create_user.ah', username=$name, email=email, password=params.password, $auth=$auth);
+user = script('openstack/create_user.ah', username=$name, email=email, password=params.password, $auth=$auth);
 
-project = async script('openstack/create_project.ah', $name=$name);
+project = script('openstack/create_project.ah', $name=$name);
 
 await;
 

@@ -5,7 +5,7 @@ auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver')
 
 url 'http://172.25.190.14:5000';
 
-endpoint('keystone@OpenstackDriver');
+log(endpoint('keystone@OpenstackDriver'));
 
 projects = get('/v3/auth/projects', {
   'driver': 'OpenstackDriver'

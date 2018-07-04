@@ -1,0 +1,18 @@
+name 'create_user';
+
+sig username, email, password;
+
+auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+return post('/v3/users', {
+  'driver': 'OpenstackDriver',
+  'post': {
+    'user': {
+       'name': params.username,
+       'email': params.email,
+       'password': param.password
+    }
+  }
+}) {% result = result.user.id; log('The new user ID is: ' + result) %};

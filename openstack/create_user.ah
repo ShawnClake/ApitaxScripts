@@ -1,6 +1,8 @@
 name 'create_user';
 
-sig username, email, password, $auth;
+sig username, email, password;
+
+auth login(username='api_admin', password='apiadmin123', driver='OpenstackDriver');
 
 url endpoint('keystone@OpenstackDriver');
 

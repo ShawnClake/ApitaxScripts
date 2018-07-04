@@ -3,20 +3,13 @@ name 'Testing';
 
 auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
 
-url 'http://172.25.190.14:5000';
+url endpoint('keystone@OpenstackDriver');
 
-log(endpoint('keystone@OpenstackDriver'));
-
-projects = get('/v3/auth/projects', {
+get('/v3/auth/projects', {
   'driver': 'OpenstackDriver'
 }) {%
-  result = result.projects;
+  for project in result.projects
+  {
+    log(project.name);
+  };
 %};
-
-log(projects);
-
-log('Made it to the end');
-
-
-
-

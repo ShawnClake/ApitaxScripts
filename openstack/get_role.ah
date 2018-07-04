@@ -9,7 +9,7 @@ sig role_name;
 return get('/v3/roles', {
     'driver': 'OpenstackDriver',
     'query': {
-      'name': params.role_name;
+      'name': params.role_name,
     },
   }) {%
   result = result.roles.0;

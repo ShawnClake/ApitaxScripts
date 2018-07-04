@@ -12,7 +12,7 @@ return post('/v3/users', {
     'user': {
        'name': params.username,
        'email': params.email,
-       'password': param.password
+       'password': params.password
     }
   }
 }) {% result = result.user.id; log('The new user ID is: ' + result) %};

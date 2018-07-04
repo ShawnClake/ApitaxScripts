@@ -11,7 +11,7 @@ for project in get('/v3/auth/projects', {
   'driver': 'OpenstackDriver'
 }) {%
   result = result.projects
-%};
+%}
 {
 log(project.$name);
 }

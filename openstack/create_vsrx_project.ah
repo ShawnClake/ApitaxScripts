@@ -9,3 +9,5 @@ sig $name;
 $name = 'vsrx_' + params.$name;
 
 log($name);
+
+script('openstack/get_role.ah', role_name='admin');

@@ -1,7 +1,16 @@
 
-name 'Smores';
+name 'Testing';
 
-log("Test this update");
+auth login(username='api_admin',password='apiadmin123',driver='Openstack');
 
-somevar = 'test';
+url 'http://172.25.190.14:5000';
+
+log(get('/v3/auth/projects', {
+  'driver': 'Openstack'
+}));
+
+log('Made it to the end');
+
+
+
 

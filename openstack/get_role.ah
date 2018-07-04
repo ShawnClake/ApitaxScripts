@@ -1,0 +1,17 @@
+name 'get_role';
+
+auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+sig role_name;
+
+return get('/v3/roles', {
+    'driver': 'OpenstackDriver',
+    'query': {
+      'name': params.role_name;
+    },
+  }) {%
+  result = result.roles.0;
+%};
+

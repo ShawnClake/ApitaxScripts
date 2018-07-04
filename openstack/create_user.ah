@@ -15,4 +15,4 @@ return post('/v3/users', {
        'password': params.password
     }
   }
-}) {% result = result.user.id; log('The new user ID is: ' + result) %};
+}) {% result = result.user.id; log('The new user ID is: ' + result); %};

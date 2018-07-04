@@ -18,9 +18,7 @@ user = async script('openstack/create_user.ah', username=$name,email=email,passw
 
 project = async script('openstack/create_project.ah', $name=$name);
 
-await role;
-await user;
-await project;
+await;
 
 script('openstack/assign_role.ah', user_id=user, project_id=project, role_id=role.id);
 

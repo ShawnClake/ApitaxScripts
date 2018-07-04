@@ -7,7 +7,9 @@ url 'http://172.25.190.14:5000';
 
 projects = get('/v3/auth/projects', {
   'driver': 'OpenstackDriver'
-});
+}) {%
+  result = result.projects;
+%};
 
 log('Made it to the end');
 

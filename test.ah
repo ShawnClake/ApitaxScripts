@@ -8,11 +8,11 @@ url endpoint('keystone@OpenstackDriver');
 return get('/v3/auth/projects', {
     'driver': 'OpenstackDriver'
   }) {%
-    projectUrs = [];
+    projectUrls = [];
     for project in result.projects
     {
       log(project.$name);
-      projectUrs[] = project.links.self;
+      projectUrls[] = project.links.self;
     }
-    result = projectUrs;
+    result = projectUrls;
 %};

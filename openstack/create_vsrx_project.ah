@@ -1,0 +1,11 @@
+name 'Testing';
+
+auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+sig $name;
+
+$name = 'vsrx_' + params.$name;
+
+log($name);

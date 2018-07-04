@@ -1,11 +1,11 @@
 name 'assign_role';
 
-sig user_id, project_id, role_id, auth=false;
+sig user_id, project_id, role_id, $auth=false;
 
 if(!auth)
   auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
 else
-  auth params.auth;  
+  auth params.$auth;  
 
 url endpoint('keystone@OpenstackDriver');
 

@@ -11,5 +11,5 @@ get('/v3/auth/projects', {
   for project in result.projects
   {
     log(project.name);
-  };
+  }
 %};

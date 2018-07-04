@@ -11,6 +11,8 @@ projects = get('/v3/auth/projects', {
   result = result.projects;
 %};
 
+log(projects);
+
 log('Made it to the end');
 
 

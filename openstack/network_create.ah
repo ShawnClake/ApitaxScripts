@@ -18,7 +18,7 @@ return post("/v2.0/networks", {
 	    }
 	}
 }) {%
-	result = result.network;
+	result = result.network.id;
 %};
 
 

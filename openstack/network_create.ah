@@ -4,7 +4,7 @@ sig username, password, net_name, vlan, physnet, project_id, net_type="vlan", sh
 
 auth login(username=params.username, password=params.password, driver='OpenstackDriver');
 
-url endpoints.neutron;
+url params.endpoints.neutron;
 
 return post("/v2.0/networks", {
         'driver': 'OpenstackDriver',

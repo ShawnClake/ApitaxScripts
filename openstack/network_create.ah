@@ -9,7 +9,7 @@ url endpoint('neutron@OpenstackDriver');
 postData = {
     "network": {
         "name": params.net_name,
-        "provider:network_type": "vlan",
+        "provider:network_type": params.net_type,
         "provider:physical_network": params.physnet,
         "provider:segmentation_id": params.vlan,
         "shared": params.shared,
@@ -18,7 +18,17 @@ postData = {
 };
 
 theresult = post("/v2.0/networks", {
-	"post": postData
+        'driver': 'OpenstackDriver',
+	"post": {
+	    "network": {
+		"name": params.net_name,
+		"provider:network_type": params.net_type,
+		"provider:physical_network": params.physnet,
+		"provider:segmentation_id": params.vlan,
+		"shared": params.shared,
+		"project_id": params.project_id
+	    }
+	}
 }) {%
 	result = result.network;
 %};

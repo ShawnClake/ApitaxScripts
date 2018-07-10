@@ -6,7 +6,7 @@ auth login(username=params.username, password=params.password, driver='Openstack
 
 url endpoint('neutron@OpenstackDriver');
 
-theresult = post("/v2.0/networks", {
+return post("/v2.0/networks", {
         'driver': 'OpenstackDriver',
 	"post": {
 	    "network": {

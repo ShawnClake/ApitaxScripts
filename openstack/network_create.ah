@@ -6,17 +6,6 @@ auth login(username=params.username, password=params.password, driver='Openstack
 
 url endpoint('neutron@OpenstackDriver');
 
-postData = {
-    "network": {
-        "name": params.net_name,
-        "provider:network_type": params.net_type,
-        "provider:physical_network": params.physnet,
-        "provider:segmentation_id": params.vlan,
-        "shared": params.shared,
-        "project_id": params.project_id
-    }
-};
-
 theresult = post("/v2.0/networks", {
         'driver': 'OpenstackDriver',
 	"post": {

@@ -4,7 +4,7 @@ auth login(username='api_admin', password='apiadmin123', driver='OpenstackDriver
 
 url endpoint('keystone@OpenstackDriver');
 
-sig $name, role='admin', password, networkName, vlan, physnet='datacentre';
+sig $name, role='admin', password, net_name, vlan, physnet='datacentre';
 
 $name = 'vsrx_' + params.$name;
 
@@ -26,7 +26,7 @@ script('openstack/assign_role.ah', user_id=user, project_id=project, role_id=rol
 
 // Network Setup
 
-network = script('openstack/network_create.ah', username=$name, password=params.password, net_name=params.networkName, vlan=params.vlan, physnet=params.physnet, project_id=project);
+network = script('openstack/network_create.ah', username='api_admin', password='apiadmin123', net_name=params.net_name, vlan=params.vlan, physnet=params.physnet, project_id=project);
 
 
 

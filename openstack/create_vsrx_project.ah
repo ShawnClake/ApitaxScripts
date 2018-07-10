@@ -7,7 +7,7 @@ url endpoint('keystone@OpenstackDriver');
 endpoints = {};
 endpoints.neutron = endpoint('neutron@OpenstackDriver');
 
-sig $name, role='admin', password, net_name, vlan, physnet='datacentre';
+sig $name, role='admin', password, net_name, vlan, cidr="0.0.0.0/24", physnet='datacentre';
 
 $name = 'vsrx_' + params.$name;
 
@@ -31,5 +31,5 @@ script('openstack/assign_role.ah', user_id=user, project_id=project, role_id=rol
 
 network = script('openstack/network_create.ah', username='api_admin', password='apiadmin123', net_name=params.net_name, vlan=params.vlan, physnet=params.physnet, project_id=project, endpoints=endpoints);
 
-
+subnet = script('openstack/subnet_create.ah', username='api_admin', password='apiadmin123', sub_name=params.net_name+"_subnet", network_id=network, cidr=params.cidr, endpoints=endpoints, enable_dhcp=false, gateway_ip="null");
 

@@ -1,6 +1,6 @@
 name 'subnets_create';
 
-sig username, password, sub_name, network_id, cidr, endpoints;
+sig username, password, sub_name, network_id, cidr, endpoints, enable_dhcp=true, gateway_ip="";
 
 auth login(username=params.username, password=params.password, driver='OpenstackDriver');
 
@@ -9,12 +9,14 @@ url params.endpoints.neutron;
 return post("/v2.0/subnets", {
         'driver': 'OpenstackDriver',
 	"post": {
-    "subnet": {
-        "network_id": params.network_id,
-        "ip_version": 4,
-        "cidr": params.cidr,
-        "name": params.sub_name,
-    }
+    		"subnet": {
+    		   "network_id": params.network_id,
+     		   "ip_version": 4,
+     		   "cidr": params.cidr,
+     		   "name": params.sub_name,
+		   "enable_dhcp": params.enable_dhcp,
+		   "gateway_ip": params.gateway_ip,
+   		}
 	}
 }) {%
 	result = result.subnet.id;

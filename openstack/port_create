@@ -1,0 +1,24 @@
+name 'port_create';
+
+sig username, password, port_name, network_id, mac_address=false, endpoints;
+
+auth login(username=params.username, password=params.password, driver='OpenstackDriver');
+
+url params.endpoints.neutron;
+
+postData = {
+		"port": {
+        "name": params.port_name,
+        "network_id": params.network_id,
+    }
+};
+
+if(params.mac_address)
+		postData.port.mac_address = params.mac_address;
+
+return post("/v2.0/ports", {
+  'driver': 'OpenstackDriver',
+	"post": postData,
+}) {%
+	result = result.network.id;
+%};

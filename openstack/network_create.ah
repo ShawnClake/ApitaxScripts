@@ -1,0 +1,26 @@
+name 'networks_create';
+
+sig username, password, net_name, vlan, physnet, project_id, net_type="vlan", shared = true;
+
+auth login(username=params.username, password=params.password, driver='OpenstackDriver');
+
+url endpoint('neutron@OpenstackDriver');
+
+postData = {
+    "network": {
+        "name": params.net_name,
+        "provider:network_type": "vlan",
+        "provider:physical_network": params.physnet,
+        "provider:segmentation_id": params.vlan,
+        "shared": params.shared,
+        "project_id": params.project_id
+    }
+};
+
+return post("/v2.0/networks", {
+	"post": postData
+}) {%
+	result = result.network;
+%};
+
+

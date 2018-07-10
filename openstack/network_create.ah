@@ -17,7 +17,7 @@ postData = {
     }
 };
 
-return post("/v2.0/networks", {
+theresult = post("/v2.0/networks", {
 	"post": postData
 }) {%
 	result = result.network;

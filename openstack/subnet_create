@@ -17,5 +17,5 @@ return post("/v2.0/subnets", {
     }
 	}
 }) {%
-	result = result.subnet;
+	result = result.subnet.id;
 %};

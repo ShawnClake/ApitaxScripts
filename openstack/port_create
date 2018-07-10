@@ -20,5 +20,5 @@ return post("/v2.0/ports", {
   'driver': 'OpenstackDriver',
 	"post": postData,
 }) {%
-	result = result.network.id;
+	result = result.port.id;
 %};

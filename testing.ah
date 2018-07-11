@@ -1,0 +1,18 @@
+
+name 'Testing123';
+
+auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+return get('/v3/auth/projects', {
+    'driver': 'OpenstackDriver'
+  }) {%
+    projectUrls = [];
+    for project in result.projects
+    {
+      log(project.$name);
+      projectUrls[] = project.links.self;
+    }
+    result = projectUrls;
+%};

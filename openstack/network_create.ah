@@ -2,7 +2,7 @@ name 'networks_create';
 
 sig username, password, net_name, vlan, physnet, project_id, net_type="vlan", shared = true, endpoints;
 
-auth login(username=params.username, password=params.password, driver='OpenstackDriver');
+auth login(username=params.username, password=params.password, driver='OpenstackDriver', extra={"project_id": params.project_id});
 
 url params.endpoints.neutron;
 

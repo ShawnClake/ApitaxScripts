@@ -1,5 +1,5 @@
 
-name 'Testing';
+name 'Testing123';
 
 auth login(username='api_admin',password='apiadmin123',driver='OpenstackDriver');
 

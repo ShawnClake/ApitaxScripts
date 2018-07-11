@@ -1,8 +1,8 @@
 name 'subnets_create';
 
-sig username, password, sub_name, network_id, cidr, endpoints, enable_dhcp=true, gateway_ip="";
+sig username, password, project_id, sub_name, network_id, cidr, endpoints, enable_dhcp=true, gateway_ip="";
 
-auth login(username=params.username, password=params.password, driver='OpenstackDriver');
+auth login(username=params.username, password=params.password, driver='OpenstackDriver', extra={"project_id": params.project_id});
 
 url params.endpoints.neutron;
 

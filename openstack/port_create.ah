@@ -1,8 +1,8 @@
 name 'port_create';
 
-sig username, password, port_name, network_id, mac_address=false, endpoints;
+sig username, password, port_name, port_ip=false, subnet_id=false, network_id, project_id mac_address=false, endpoints;
 
-auth login(username=params.username, password=params.password, driver='OpenstackDriver');
+auth login(username=params.username, password=params.password, driver='OpenstackDriver', extra={"project_id": params.project_id});
 
 url params.endpoints.neutron;
 
@@ -10,11 +10,19 @@ postData = {
 		"port": {
         "name": params.port_name,
         "network_id": params.network_id,
-    }
+        "fixed_ips": [],
 };
 
 if(params.mac_address)
-		postData.port.mac_address = params.mac_address;
+	postData.port.mac_address = params.mac_address;
+    
+if(params.subnet_id)
+{
+	ipData = {"subnet_id": params.subnet_id};
+    if(params.port_ip)
+    	ipData.ip_address = params.port_ip;
+	postData.port.fixed_ips[] = ipData;
+}
 
 return post("/v2.0/ports", {
   'driver': 'OpenstackDriver',

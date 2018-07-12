@@ -1,6 +1,6 @@
 name 'port_create';
 
-sig username, password, port_name, port_ip=false, subnet_id=false, network_id, project_id mac_address=false, endpoints;
+sig username, password, port_name, port_ip=false, subnet_id=false, network_id, project_id, mac_address=false, endpoints;
 
 auth login(username=params.username, password=params.password, driver='OpenstackDriver', extra={"project_id": params.project_id});
 

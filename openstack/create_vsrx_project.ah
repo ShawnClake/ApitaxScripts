@@ -29,7 +29,7 @@ script('openstack/assign_role.ah', user_id=user, project_id=project, role_id=rol
 
 // Network Setup
 
-//network = script('openstack/network_create.ah', username='api_admin', password='apiadmin123', net_name=params.net_name, vlan=params.vlan, physnet=params.physnet, project_id=project, endpoints=endpoints);
+network = script('openstack/network_create.ah', username=$name, password=params.password, net_name=params.net_name, vlan=params.vlan, physnet=params.physnet, project_id=project, endpoints=endpoints);
 
-//subnet = script('openstack/subnet_create.ah', username='api_admin', password='apiadmin123', sub_name=params.net_name+"_subnet", network_id=network, cidr=params.cidr, endpoints=endpoints, enable_dhcp=false, gateway_ip="null");
+subnet = script('openstack/subnet_create.ah', username=$name, password=params.password, sub_name=params.net_name+"_subnet", network_id=network, cidr=params.cidr, project_id=project, endpoints=endpoints, enable_dhcp=false, gateway_ip="null");
 

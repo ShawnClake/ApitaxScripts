@@ -7,7 +7,7 @@ url endpoint('keystone@OpenstackDriver');
 endpoints = {};
 endpoints.neutron = endpoint('neutron@OpenstackDriver');
 
-sig $name, role='admin', password, net_name, vlan, cidr="216.197.242.0/29", physnet='datacentre', port_ip="216.197.242.4";
+sig $name, role='admin', password, net_name, vlan, cidr="", physnet='datacentre', port_ip="";
 
 $name = 'vsrx_' + params.$name;
 

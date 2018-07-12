@@ -14,7 +14,6 @@ return post("/v2.0/networks", {
 		"provider:network_type": params.net_type,
 		"provider:physical_network": params.physnet,
 		"provider:segmentation_id": params.vlan,
-                "project_id": params.project_id
 	    }
 	}
 }) {%

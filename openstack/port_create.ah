@@ -7,10 +7,11 @@ auth login(username=params.username, password=params.password, driver='Openstack
 url params.endpoints.neutron;
 
 postData = {
-		"port": {
+    "port": {
         "name": params.port_name,
         "network_id": params.network_id,
         "fixed_ips": [],
+    }
 };
 
 if(params.mac_address)

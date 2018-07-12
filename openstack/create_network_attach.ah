@@ -1,2 +1,23 @@
 name 'Create_Network_and_Attach';
 
+sig $name, password, project_id, net_name, vlan, cidr="216.197.242.0/29", physnet='datacentre', port_ip="216.197.242.4", instance_id=false;
+
+auth login(username=params.$name, password=params.password, driver='OpenstackDriver');
+
+url endpoint('keystone@OpenstackDriver');
+
+endpoints = {};
+endpoints.neutron = endpoint('neutron@OpenstackDriver');
+endpoints.nova = endpoint('nova@OpenstackDriver');
+
+// Network Setup
+
+network = script('openstack/network_create.ah', username=params.$name, password=params.password, net_name=params.net_name, vlan=params.vlan, physnet=params.physnet, project_id=project_id, endpoints=endpoints);
+
+subnet = script('openstack/subnet_create.ah', username=params.$name, password=params.password, sub_name=params.net_name+"_subnet", network_id=network, cidr=params.cidr, project_id=project_id, endpoints=endpoints, enable_dhcp=false, gateway_ip="null");
+
+port = script('openstack/port_create.ah', username=params.$name, password=params.password, port_name=params.net_name+"_port", port_ip=params.port_ip, subnet_id=subnet, network_id=network, project_id=project_id, endpoints=endpoints);
+
+if(params.instance_id)
+	port_state = script('openstack/instance_attach_port.ah', username=params.$name, password=params.password, port_id=port, instance_id=params.instance_id, project_id=project_id, endpoints=endpoints);
+

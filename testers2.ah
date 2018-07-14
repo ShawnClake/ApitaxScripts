@@ -1,4 +1,3 @@
-this is another cool one
+name 'me';
 
-
-yup
+log('test');

@@ -1,3 +1,5 @@
 name 'me';
 
 log('test');
+
+log('test2');

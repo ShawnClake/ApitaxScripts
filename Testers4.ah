@@ -1,3 +1,5 @@
 name 'hi';
 
 log('anothertest');
+
+log('a final test');
